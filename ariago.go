@@ -1,3 +1,4 @@
+// Package ariago for download through aria2c
 package ariago
 
 import (
@@ -8,6 +9,7 @@ import (
 	"os/exec"
 )
 
+// Aria exported
 func Aria(url, outFile string) {
 	aria := exec.Command("aria2c", "--stderr=true", "-c", "-s16", "-j16", "-x16", "-k1M", "-o", outFile, url)
 
@@ -36,6 +38,7 @@ Loop:
 	aria.Wait()
 }
 
+// PipeRead exported
 func PipeRead(ch chan string, done chan interface{}, r io.Reader) {
 	rdr := bufio.NewReader(r)
 	for {
